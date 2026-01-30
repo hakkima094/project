@@ -53,6 +53,44 @@ res.send("Product Added!")
 })
 
 
+app.get("/getallproduct",(req,res)=>{
+
+
+    PM.find({})
+    .then((d)=>{
+        res.send(d)
+    })
+    .catch((e)=>{
+        res.send("Error to Fetch Data")
+    })
+
+
+
+
+})
+
+
+app.get("/fetchbyCategory/:type",(req,res)=>{
+
+
+    const {type} = req.params;
+
+    PM.find({category:type})
+    .then((d)=>{
+        res.send(d);
+    })
+    .catch((e)=>{
+        res.send("Product Not Found")
+    })
+
+
+
+
+
+
+})
+
+
 
 
 app.listen(8000,()=>{
